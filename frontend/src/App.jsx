@@ -13,7 +13,6 @@ import slide5 from "./assets/5.png";
 import slide6 from "./assets/6.png";
 import slide7 from "./assets/7.png";
 import slide10 from "./assets/10.png";
-import slide11 from "./assets/11.png";
 import slide12 from "./assets/12.png";
 import slide13 from "./assets/13.png";
 import slide14 from "./assets/14.png";
@@ -58,11 +57,6 @@ const ecoNarrative = [
     img: slide10,
     title: "TBI NIT Calicut Ecosystem",
     desc: "Incubated at Technology Business Incubator, NIT Calicut.",
-  },
-  {
-    img: slide11,
-    title: "Strategic Roadmap",
-    desc: "From pilot validation to global expansion and B2B leadership.",
   },
   {
     img: slide12,

@@ -16,6 +16,9 @@ import slide10 from "./assets/10.png";
 import slide12 from "./assets/12.png";
 import slide13 from "./assets/13.png";
 import slide14 from "./assets/14.png";
+import slide16 from "./assets/16.png";
+import slide18 from "./assets/18.png";
+
 
 const ecoNarrative = [
   {
@@ -23,10 +26,11 @@ const ecoNarrative = [
     title: "Daily Functional Hydration",
     desc: "A new category of beverage merging natural electrolytes and prebiotic support with 100% glass packaging.",
   },
+
   {
-    img: slide2,
-    title: "Carbon Net-Zero Mission",
-    desc: "Building a future with zero emissions and regenerative impact through biotechnology.",
+    img: slide12,
+    title: "Multidisciplinary Expertise",
+    desc: "Experts in Material Science, Biotechnology, and Food Technology.",
   },
   {
     img: slide3,
@@ -38,20 +42,21 @@ const ecoNarrative = [
     title: "Advanced Water Solutions",
     desc: "Intelligent hydration powered by purification and contaminant removal technologies.",
   },
-  {
-    img: slide5,
-    title: "Sustainable Materials",
-    desc: "Developing bio-based circular materials that transform industrial inputs into assets.",
-  },
+
   {
     img: slide6,
     title: "Gut-Friendly Innovation",
     desc: "Harnessing coconut-water-derived electrolytes and prebiotic restoration.",
   },
   {
-    img: slide7,
-    title: "Zero-Waste Engineering",
-    desc: "Achieving circularity where every material is reused and retained.",
+    img: slide16,
+    title: "Scientific Mechanism",
+    desc: "A scientifically engineered prebitioc hydfation system desgined to support gut microbiome balance, reduce inflammation, and improve overall wellness through functional bioactive compounds.",
+  },
+  {
+    img: slide5,
+    title: "Sustainable Materials",
+    desc: "Developing bio-based circular materials that transform industrial inputs into assets.",
   },
   {
     img: slide10,
@@ -59,20 +64,40 @@ const ecoNarrative = [
     desc: "Incubated at Technology Business Incubator, NIT Calicut.",
   },
   {
-    img: slide12,
-    title: "Multidisciplinary Expertise",
-    desc: "Experts in Material Science, Biotechnology, and Food Technology.",
+    img: slide18,
+    title: "Bussiness Model",
+    desc: "A scalable subscription-driven wellness business model combining D2C sales,retail distribution and global expansion strategies for long-term recurring growth.",
   },
   {
-    img: slide13,
-    title: "Aligned with UN SDGs",
-    desc: "Targeting Innovation, Responsible Production, and Clean Water.",
+    img: slide7,
+    title: "Zero-Waste Engineering",
+    desc: "Achieving circularity where every material is reused and retained.",
   },
   {
     img: slide14,
     title: "Hydration. Inside Out.",
     desc: "The NEIOX vision: a borderless circular manufacturing network.",
   },
+  {
+    img: slide13,
+    title: "Aligned with UN SDGs",
+    desc: "Targeting Innovation, Responsible Production, and Clean Water.",
+  },
+  
+  {
+    img: slide2,
+    title: "Carbon Net-Zero Mission",
+    desc: "Building a future with zero emissions and regenerative impact through biotechnology.",
+  },
+  
+  
+  
+  
+  
+  
+  
+  
+  
 ];
 
 function App() {

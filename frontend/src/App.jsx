@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 // ASSETS
 import logo from "./assets/logo.png";
@@ -26,7 +26,6 @@ const ecoNarrative = [
     title: "Daily Functional Hydration",
     desc: "A new category of beverage merging natural electrolytes and prebiotic support with 100% glass packaging.",
   },
-
   {
     img: slide12,
     title: "Multidisciplinary Expertise",
@@ -42,7 +41,6 @@ const ecoNarrative = [
     title: "Advanced Water Solutions",
     desc: "Intelligent hydration powered by purification and contaminant removal technologies.",
   },
-
   {
     img: slide6,
     title: "Gut-Friendly Innovation",
@@ -51,7 +49,7 @@ const ecoNarrative = [
   {
     img: slide16,
     title: "Scientific Mechanism",
-    desc: "A scientifically engineered prebitioc hydfation system desgined to support gut microbiome balance, reduce inflammation, and improve overall wellness through functional bioactive compounds.",
+    desc: "A scientifically engineered prebiotic hydration system designed to support gut microbiome balance, reduce inflammation, and improve overall wellness through functional bioactive compounds.",
   },
   {
     img: slide5,
@@ -65,8 +63,8 @@ const ecoNarrative = [
   },
   {
     img: slide18,
-    title: "Bussiness Model",
-    desc: "A scalable subscription-driven wellness business model combining D2C sales,retail distribution and global expansion strategies for long-term recurring growth.",
+    title: "Business Model",
+    desc: "A scalable subscription-driven wellness business model combining D2C sales, retail distribution and global expansion strategies for long-term recurring growth.",
   },
   {
     img: slide7,
@@ -83,25 +81,20 @@ const ecoNarrative = [
     title: "Aligned with UN SDGs",
     desc: "Targeting Innovation, Responsible Production, and Clean Water.",
   },
-  
   {
     img: slide2,
     title: "Carbon Net-Zero Mission",
     desc: "Building a future with zero emissions and regenerative impact through biotechnology.",
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ];
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
+  
+  // Element references for the JS Motion Engine
+  const alphaRef = useRef(null);
+  const betaRef = useRef(null);
+  const gammaRef = useRef(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -109,6 +102,44 @@ function App() {
     }, 3500);
 
     return () => clearTimeout(timer);
+  }, []);
+
+  // BULLETPROOF JAVASCRIPT ANIMATION TICKER ENGINE
+  useEffect(() => {
+    let animationFrameId;
+    let time = 0;
+
+    const tick = () => {
+      time += 0.0015; // Speed factor of the fluid motion
+
+      // Smooth mathematical trigonometric calculation pathways
+      const alphaX = Math.sin(time) * 40;
+      const alphaY = Math.cos(time * 0.8) * 30;
+      const alphaScale = 1 + Math.sin(time * 0.5) * 0.06;
+
+      const betaX = Math.cos(time * 1.1) * -35;
+      const betaY = Math.sin(time * 0.9) * 45;
+      const betaScale = 1 + Math.cos(time * 0.4) * 0.08;
+
+      const gammaX = Math.sin(time * 0.7) * 25;
+      const gammaY = Math.cos(time * 1.2) * -25;
+
+      // Directly force GPU translate3d updates through string mutations
+      if (alphaRef.current) {
+        alphaRef.current.style.transform = `translate3d(${alphaX}px, ${alphaY}px, 0) scale(${alphaScale})`;
+      }
+      if (betaRef.current) {
+        betaRef.current.style.transform = `translate3d(${betaX}px, ${betaY}px, 0) scale(${betaScale})`;
+      }
+      if (gammaRef.current) {
+        gammaRef.current.style.transform = `translate3d(${gammaX}px, ${gammaY}px, 0)`;
+      }
+
+      animationFrameId = requestAnimationFrame(tick);
+    };
+
+    tick();
+    return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
   useEffect(() => {
@@ -133,163 +164,62 @@ function App() {
   return (
     <>
       {/* INTRO */}
-
-      <div
-        className={`fog-wrapper ${showIntro ? "active" : "hidden"
-          }`}
-      >
+      <div className={`fog-wrapper ${showIntro ? "active" : "hidden"}`}>
         <div className="fog fog1"></div>
         <div className="fog fog2"></div>
       </div>
 
-      {/* BACKGROUND */}
-
+      {/* JAVASCRIPT DRIVEN ULTRA-FLUID BACKGROUND INTERACTION LAYER */}
       <div className="nature-overlay">
-
-        {[...Array(40)].map((_, i) => (
-          <div
-            key={`bubble-${i}`}
-            className="water-bubble"
-            style={{
-              left: `${(i * 2.7) % 100}%`,
-              top: `${(i * 4.1) % 100}%`,
-              animationDelay: `${i * 0.22}s`,
-              animationDuration: `${10 + (i % 6)}s`,
-            }}
-          />
-        ))}
-
-        <div className="water-flow flow1"></div>
-        <div className="water-flow flow2"></div>
-        <div className="water-flow flow3"></div>
-
-        {[...Array(18)].map((_, i) => (
-          <div
-            key={`particle-${i}`}
-            className="light-particle"
-            style={{
-              left: `${i * 5}%`,
-              animationDelay: `${i * 0.6}s`,
-            }}
-          />
-        ))}
-
-        {[...Array(10)].map((_, i) => (
-          <div
-            key={`orb-${i}`}
-            className="floating-orb"
-            style={{
-              left: `${i * 11}%`,
-              top: `${(i * 8) % 100}%`,
-              animationDelay: `${i * 1.5}s`,
-              animationDuration: `${18 + i}s`,
-            }}
-          />
-        ))}
-
+        <div ref={alphaRef} className="fluid-wave wave-alpha"></div>
+        <div ref={betaRef} className="fluid-wave wave-beta"></div>
+        <div ref={gammaRef} className="fluid-wave wave-gamma"></div>
+        <div className="glass-surface-glare"></div>
       </div>
 
       {/* HERO */}
-
       <section className="hero-section">
-
         <div className="hero-content">
-
-          <img
-            src={logo}
-            alt="NEIOX"
-            className="hero-logo"
-          />
-
+          <img src={logo} alt="NEIOX" className="hero-logo" />
           <div className="hero-line"></div>
-
-          <h1>
-            Innovation Meets Sustainability
-          </h1>
-
+          <h1>Innovation Meets Sustainability</h1>
         </div>
-
       </section>
 
       {/* CONTENT */}
-
       <section className="content-stream">
-
         {ecoNarrative.map((item, index) => (
-
           <div
             key={index}
-            className={`pillar-row reveal-on-scroll ${index % 2 !== 0 ? "reverse" : ""
-              }`}
+            className={`pillar-row reveal-on-scroll ${index % 2 !== 0 ? "reverse" : ""}`}
           >
-
             <div className="media-box">
-
-              <img
-                src={item.img}
-                alt={item.title}
-              />
-
+              <img src={item.img} alt={item.title} />
             </div>
-
             <div className="text-box">
-
-              <span className="pillar-tag">
-                PILLAR {index + 1}
-              </span>
-
+              <span className="pillar-tag">PILLAR {index + 1}</span>
               <h2>{item.title}</h2>
-
               <p>{item.desc}</p>
-
             </div>
-
           </div>
-
         ))}
-
       </section>
 
       {/* FOOTER */}
-
       <footer className="site-footer">
-
         <div className="footer-content">
-
           <div className="footer-logo-bar">
-
-            <img
-              src={footerlogo}
-              alt="NEIOX"
-              className="foot-logo-main"
-            />
-
+            <img src={footerlogo} alt="NEIOX" className="foot-logo-main" />
             <div className="logo-separator"></div>
-
-            <img
-              src={partners}
-              alt="Partners"
-              className="foot-logo-partners"
-            />
-
+            <img src={partners} alt="Partners" className="foot-logo-partners" />
           </div>
 
           <div className="footer-corporate-box">
-
             <div className="footer-top-row">
-
               <div>
-
-                <span className="footer-mini-title">
-                  CORPORATE CONTACT
-                </span>
-
-                <h2>
-                  Inquiry & Collaborations
-                </h2>
-
+                <span className="footer-mini-title">CORPORATE CONTACT</span>
+                <h2>Inquiry & Collaborations</h2>
               </div>
-
               <a
                 href="https://www.linkedin.com/company/neiox-eco-cycle/"
                 target="_blank"
@@ -298,65 +228,38 @@ function App() {
               >
                 Corporate Profile →
               </a>
-
             </div>
 
             <div className="corporate-grid">
-
               <div className="compact-panel">
-
-                <div className="compact-title">
-                  CONTACT
-                </div>
-
+                <div className="compact-title">CONTACT</div>
                 <div className="compact-row">
                   <span>Phone</span>
                   <strong>8943355515</strong>
                 </div>
-
                 <div className="compact-row">
                   <span>WhatsApp</span>
                   <strong>9400939955</strong>
                 </div>
-
               </div>
 
               <div className="compact-panel">
-
-                <div className="compact-title">
-                  DIGITAL
-                </div>
-
+                <div className="compact-title">DIGITAL</div>
                 <div className="compact-row">
                   <span>Email</span>
-                  <strong>
-                    neioxecocycle@gmail.com
-                  </strong>
+                  <strong>neioxecocycle@gmail.com</strong>
                 </div>
-
                 <div className="compact-row">
                   <span>Website</span>
-                  <strong>
-                    www.neioxecocycle.in
-                  </strong>
+                  <strong>www.neioxecocycle.in</strong>
                 </div>
-
               </div>
 
               <div className="compact-panel">
-
-                <div className="compact-title">
-                  OFFICE
-                </div>
-
+                <div className="compact-title">OFFICE</div>
                 <p className="compact-office">
-
-                  <strong>
-                    NEIOX ECO CYCLE PVT LTD
-                  </strong>
-
+                  <strong>NEIOX ECO CYCLE PVT LTD</strong>
                   <br /><br />
-
                   Technology Business Incubator
                   <br />
                   NIT Calicut
@@ -364,47 +267,33 @@ function App() {
                   Kozhikode, Kerala, India
                   <br />
                   PIN: 673601
-
                 </p>
-
-                <div className="mini-badge">
-                  CO INCUBATED AT IIM-K LIVE
-                </div>
-
+                <div className="mini-badge">CO INCUBATED AT IIM-K LIVE</div>
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </footer>
 
       <style>{`
-
-        body {
+        html, body, #root {
+          background: #d4f0fc !important;
+          background-color: #d4f0fc !important;
           margin: 0;
           overflow-x: hidden;
           font-family: Inter, sans-serif;
-          background: #fff;
         }
 
         /* HERO */
-
         .hero-section {
           height: 100vh;
-
           display: flex;
           align-items: center;
           justify-content: center;
-
           text-align: center;
-
-          background: white;
-
+          background: transparent !important;
           position: relative;
-          z-index: 2;
+          z-index: 3; 
         }
 
         .hero-logo {
@@ -415,85 +304,48 @@ function App() {
         .hero-line {
           width: 120px;
           height: 4px;
-
-          background: #10b981;
-
+          background: #0ea5e9;
           margin: 25px auto;
-
           border-radius: 999px;
         }
 
         .hero-content h1 {
           letter-spacing: 10px;
           text-transform: uppercase;
-
-          color: #065f46;
-
+          color: #0369a1;
           font-size: 1rem;
         }
 
-        /* CONTENT */
-
+        /* CONTENT STREAM */
         .content-stream {
           padding: 100px 0;
-
           position: relative;
-          z-index: 2;
-
-          background:
-            radial-gradient(
-              circle at top left,
-              rgba(37,99,235,0.18),
-              transparent 35%
-            ),
-
-            radial-gradient(
-              circle at bottom right,
-              rgba(2,132,199,0.16),
-              transparent 38%
-            ),
-
-            linear-gradient(
-              180deg,
-              #dbefff,
-              #d3ebff,
-              #d8efff,
-              #e8f6ff
-            );
+          z-index: 2; 
+          background: transparent !important;
         }
 
         .pillar-row {
           display: flex;
           align-items: center;
           justify-content: center;
-
           gap: 70px;
-
           padding: 90px 12%;
         }
 
         .pillar-row.reverse {
           flex-direction: row-reverse;
+          background: transparent !important;
         }
 
         .reveal-on-scroll {
           opacity: 0;
-
-          transform:
-            translateY(60px)
-            scale(0.96);
-
-          transition:
-            opacity 1.1s ease,
-            transform 1.1s ease;
+          transform: translateY(60px) scale(0.96);
+          transition: opacity 1.1s ease, transform 1.1s ease;
         }
 
         .reveal-on-scroll.is-visible {
           opacity: 1;
-
-          transform:
-            translateY(0)
-            scale(1);
+          transform: translateY(0) scale(1);
         }
 
         .media-box {
@@ -502,101 +354,60 @@ function App() {
 
         .media-box img {
           width: 100%;
-
           border-radius: 24px;
-
-          box-shadow:
-            0 20px 45px rgba(0,0,0,0.08);
+          box-shadow: 0 20px 45px rgba(14, 165, 233, 0.08);
         }
 
-        /* TEXT BOX */
-
+        /* TEXT CONTAINERS */
         .text-box {
           flex: 0.8;
-
           position: relative;
-
           padding: 34px 38px;
-
-          background:
-            linear-gradient(
-              145deg,
-              rgba(255,255,255,0.82),
-              rgba(255,255,255,0.72)
-            );
-
+          background: linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(240, 249, 255, 0.88));
+          border: 1px solid rgba(255, 255, 255, 0.6);
           border-radius: 22px;
-
-          backdrop-filter: blur(16px);
-
-          box-shadow:
-            0 10px 30px rgba(0,0,0,0.06);
-
+          backdrop-filter: blur(25px);
+          -webkit-backdrop-filter: blur(25px);
+          box-shadow: 0 15px 35px rgba(3, 105, 161, 0.04);
           overflow: hidden;
         }
 
         .text-box::before {
           content: "";
-
           position: absolute;
-
           left: 0;
           top: 18px;
           bottom: 18px;
-
           width: 8px;
-
           border-radius: 999px;
-
-          background:
-            linear-gradient(
-              180deg,
-              #10b981,
-              #22c55e,
-              #14b8a6
-            );
+          background: linear-gradient(180deg, #0ea5e9, #38bdf8, #0284c7);
         }
 
         .pillar-tag {
-          color: #10b981;
-
+          color: #0284c7;
           font-weight: 900;
-
           letter-spacing: 4px;
-
           font-size: 0.72rem;
         }
 
         .text-box h2 {
           font-size: 1.8rem;
-
-          color: #064e3b;
-
+          color: #0369a1;
           margin: 12px 0;
         }
 
         .text-box p {
-          color: #166534;
-
+          color: #0c4a6e;
           line-height: 1.75;
-
           font-size: 1rem;
         }
 
         /* FOOTER */
-
         .site-footer {
-          background:
-            linear-gradient(
-              180deg,
-              #052e2b,
-              #031b1a
-            );
-
+          background: linear-gradient(180deg, #072433, #041620);
           color: white;
-
           position: relative;
-          z-index: 2;
+          z-index: 3; 
         }
 
         .footer-content {
@@ -605,28 +416,20 @@ function App() {
 
         .footer-logo-bar {
           display: flex;
-
           justify-content: space-between;
           align-items: center;
-
           gap: 40px;
-
           padding: 28px 40px;
-
           margin-bottom: 35px;
-
-          background:
-            rgba(255,255,255,0.06);
-
+          background: rgba(255,255,255,0.05);
           border-radius: 28px;
+          border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .logo-separator {
           width: 2px;
           height: 80px;
-
-          background:
-            rgba(255,255,255,0.2);
+          background: rgba(255,255,255,0.15);
         }
 
         .foot-logo-main {
@@ -636,33 +439,27 @@ function App() {
         .foot-logo-partners {
           width: 100%;
           max-width: 500px;
+          object-fit: contain;
         }
 
         .footer-corporate-box {
-          background:
-            rgba(255,255,255,0.04);
-
+          background: rgba(255,255,255,0.03);
           border-radius: 34px;
-
           padding: 42px;
+          border: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .footer-top-row {
           display: flex;
-
           justify-content: space-between;
           align-items: center;
-
           margin-bottom: 35px;
         }
 
         .footer-mini-title {
-          color: #6ee7b7;
-
+          color: #38bdf8;
           letter-spacing: 3px;
-
           font-size: 0.8rem;
-
           font-weight: 800;
         }
 
@@ -672,62 +469,39 @@ function App() {
 
         .linkedin-btn {
           text-decoration: none;
-
           color: white;
-
-          background:
-            linear-gradient(
-              90deg,
-              #10b981,
-              #14b8a6
-            );
-
+          background: linear-gradient(90deg, #0ea5e9, #0284c7);
           padding: 12px 20px;
-
           border-radius: 999px;
-
           font-weight: 700;
         }
 
         .corporate-grid {
           display: grid;
-
-          grid-template-columns:
-            1fr 1fr 1.2fr;
-
+          grid-template-columns: 1fr 1fr 1.2fr;
           gap: 22px;
         }
 
         .compact-panel {
-          background:
-            rgba(255,255,255,0.04);
-
+          background: rgba(255,255,255,0.03);
           border-radius: 24px;
-
           padding: 26px;
+          border: 1px solid rgba(255, 255, 255, 0.02);
         }
 
         .compact-title {
-          color: #6ee7b7;
-
+          color: #38bdf8;
           font-size: 0.76rem;
-
           letter-spacing: 3px;
-
           font-weight: 800;
-
           margin-bottom: 20px;
         }
 
         .compact-row {
           display: flex;
-
           justify-content: space-between;
-
           padding: 12px 0;
-
-          border-bottom:
-            1px solid rgba(255,255,255,0.08);
+          border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
         .compact-row span {
@@ -736,160 +510,79 @@ function App() {
 
         .compact-office {
           line-height: 1.8;
+          color: #e0f2fe;
         }
 
         .mini-badge {
           margin-top: 18px;
-
           display: inline-block;
-
           padding: 10px 16px;
-
           border-radius: 999px;
-
-          background:
-            linear-gradient(
-              90deg,
-              #10b981,
-              #14b8a6
-            );
-
+          background: linear-gradient(90deg, #0ea5e9, #0284c7);
           font-size: 0.78rem;
-
           font-weight: 700;
         }
 
-        /* BACKGROUND ANIMATIONS */
-
+        /* BACKGROUND ENGINE SPECIFICATIONS */
         .nature-overlay {
           position: fixed;
           inset: 0;
-
           pointer-events: none;
-
           overflow: hidden;
-
-          z-index: 0;
+          z-index: 1; 
+          background: linear-gradient(180deg, #cbeefa 0%, #e8f7fd 60%, #daf0fc 100%) !important;
         }
 
-        .water-bubble {
+        .fluid-wave {
           position: absolute;
-
-          width: 14px;
-          height: 14px;
-
           border-radius: 50%;
-
-          background:
-            radial-gradient(
-              circle at 30% 30%,
-              rgba(255,255,255,0.95),
-              rgba(56,189,248,0.9)
-            );
-
-          border:
-            1px solid rgba(255,255,255,0.45);
-
-          box-shadow:
-            0 0 16px rgba(56,189,248,0.35),
-            0 0 32px rgba(56,189,248,0.18);
-
-          animation:
-            subtleBubble linear infinite;
+          filter: blur(80px);
+          mix-blend-mode: multiply;
+          will-change: transform;
         }
 
-        @keyframes subtleBubble {
-
-          0% {
-            transform:
-              translateY(120px)
-              scale(0.35);
-
-            opacity: 0;
-          }
-
-          15% {
-            opacity: 0.35;
-          }
-
-          50% {
-            opacity: 0.5;
-          }
-
-          100% {
-            transform:
-              translateY(-420px)
-              scale(1.45);
-
-            opacity: 0;
-          }
-
+        .wave-alpha {
+          width: 80vw;
+          height: 80vw;
+          top: -15%;
+          left: -10%;
+          background: radial-gradient(circle, rgba(14, 165, 233, 0.45) 0%, transparent 75%);
         }
 
-        .floating-orb {
+        .wave-beta {
+          width: 90vw;
+          height: 90vw;
+          bottom: -10%;
+          right: -10%;
+          background: radial-gradient(circle, rgba(56, 189, 248, 0.4) 0%, transparent 75%);
+        }
+
+        .wave-gamma {
+          width: 75vw;
+          height: 75vw;
+          top: 35%;
+          left: 20%;
+          background: radial-gradient(circle, rgba(125, 211, 252, 0.45) 0%, transparent 70%);
+        }
+
+        .glass-surface-glare {
           position: absolute;
-
-          width: 260px;
-          height: 260px;
-
-          border-radius: 50%;
-
-          background:
-            radial-gradient(
-              circle,
-              rgba(16,185,129,0.18),
-              rgba(56,189,248,0.12),
-              transparent 72%
-            );
-
-          filter: blur(20px);
-
-          opacity: 0.9;
-
-          animation:
-            floatingOrbMove linear infinite;
-        }
-
-        @keyframes floatingOrbMove {
-
-          0% {
-            transform:
-              translateY(0px)
-              translateX(0px);
-          }
-
-          50% {
-            transform:
-              translateY(-40px)
-              translateX(30px);
-          }
-
-          100% {
-            transform:
-              translateY(0px)
-              translateX(0px);
-          }
-
+          inset: 0;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, transparent 50%, rgba(224, 242, 254, 0.2) 100%);
         }
 
         @media (max-width: 1024px) {
-
-          .pillar-row,
-          .pillar-row.reverse {
+          .pillar-row, .pillar-row.reverse {
             flex-direction: column;
             padding: 60px 6%;
           }
-
           .footer-logo-bar {
             flex-direction: column;
           }
-
           .corporate-grid {
             grid-template-columns: 1fr;
           }
-
         }
-
       `}</style>
     </>
   );
